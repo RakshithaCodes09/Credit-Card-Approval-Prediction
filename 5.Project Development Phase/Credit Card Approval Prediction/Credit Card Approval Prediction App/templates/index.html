@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block title %}Credit Card Approval Predictor {% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Credit Card Approval Prediction</h1>
+    <p>Predict risk and evaluate credit card approval probability using our trained Gradient Boosting model.</p>
+</div>
+
+<div class="grid-2">
+    <!-- Form Card -->
+    <div class="card">
+        <h2 class="card-title"><i class="fa-solid fa-file-invoice-dollar"></i> Applicant Details</h2>
+        <form method="POST" action="{{ url_for('index') }}" class="form-grid" novalidate id="predict-form">
+            {{ form.hidden_tag() }}
+            
+            <div class="form-group">
+                {{ form.gender.label }}
+                {{ form.gender(class="form-control", id="input-gender") }}
+                {% for error in form.gender.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.age.label }}
+                {{ form.age(class="form-control", placeholder="e.g. 35", id="input-age") }}
+                {% for error in form.age.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.own_car.label }}
+                {{ form.own_car(class="form-control", id="input-own-car") }}
+                {% for error in form.own_car.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.own_realty.label }}
+                {{ form.own_realty(class="form-control", id="input-own-realty") }}
+                {% for error in form.own_realty.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.children_count.label }}
+                {{ form.children_count(class="form-control", min="0", id="input-children-count") }}
+                {% for error in form.children_count.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.family_size.label }}
+                {{ form.family_size(class="form-control", min="1", id="input-family-size") }}
+                {% for error in form.family_size.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.annual_income.label }}
+                {{ form.annual_income(class="form-control", placeholder="USD per year", id="input-annual-income") }}
+                {% for error in form.annual_income.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.income_type.label }}
+                {{ form.income_type(class="form-control", id="input-income-type") }}
+                {% for error in form.income_type.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.education_type.label }}
+                {{ form.education_type(class="form-control", id="input-education-type") }}
+                {% for error in form.education_type.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.family_status.label }}
+                {{ form.family_status(class="form-control", id="input-family-status") }}
+                {% for error in form.family_status.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.housing_type.label }}
+                {{ form.housing_type(class="form-control", id="input-housing-type") }}
+                {% for error in form.housing_type.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group" id="group-years-employed">
+                {{ form.years_employed.label }}
+                {{ form.years_employed(class="form-control", step="0.5", id="input-years-employed") }}
+                {% for error in form.years_employed.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group" id="group-occupation-type">
+                {{ form.occupation_type.label }}
+                {{ form.occupation_type(class="form-control", id="input-occupation-type") }}
+                {% for error in form.occupation_type.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.work_phone.label }}
+                {{ form.work_phone(class="form-control", id="input-work-phone") }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.phone.label }}
+                {{ form.phone(class="form-control", id="input-phone") }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(class="form-control", id="input-email") }}
+            </div>
+            
+            <div class="form-group full-width" style="margin-top: 1rem;">
+                {{ form.submit(class="btn btn-primary", style="width: 100%;", id="btn-submit") }}
+            </div>
+        </form>
+    </div>
+
+    <!-- Results Panel Card -->
+    <div class="card">
+        <h2 class="card-title"><i class="fa-solid fa-square-poll-vertical"></i> Decision Output</h2>
+        {% if result %}
+            <div class="result-box {% if result.approved %}result-approved{% else %}result-rejected{% endif %}" id="result-container">
+                <span class="result-badge {% if result.approved %}approved-badge{% else %}rejected-badge{% endif %}" id="result-badge">
+                    {% if result.approved %}APPROVED{% else %}REJECTED{% endif %}
+                </span>
+                
+                <div>
+                    <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">
+                        Approval Probability
+                    </p>
+                    <div class="result-value" id="result-probability-text">
+                        {{ "{:.1%}".format(result.probability) }}
+                    </div>
+                </div>
+
+                <div class="result-progress">
+                    <div class="progress-fill" style="width: {{ result.probability * 100 }}%;" id="result-progress-bar"></div>
+                </div>
+
+                <p style="font-size: 0.85rem; color: var(--text-muted);">
+                    Analysis completed at: <span id="result-timestamp">{{ result.timestamp }}</span>
+                </p>
+
+                <div class="recommendations">
+                    <h4>Recommendations & System Advice</h4>
+                    <ul id="result-recs-list">
+                        {% for rec in result.recommendations %}
+                            <li>{{ rec }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% else %}
+            <div style="text-align: center; padding: 4rem 2rem; color: var(--text-secondary);" id="no-result-placeholder">
+                <i class="fa-solid fa-fingerprint" style="font-size: 4rem; margin-bottom: 1.5rem; color: var(--text-muted);"></i>
+                <h3>Awaiting Input</h3>
+                <p style="margin-top: 0.5rem;">Enter applicant details on the left and submit to view credit card approval probability scores.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Handle Pensioner selection to automatically disable/adjust occupational items
+    const incomeType = document.getElementById('input-income-type');
+    const occupationType = document.getElementById('input-occupation-type');
+    const yearsEmployed = document.getElementById('input-years-employed');
+    const groupYears = document.getElementById('group-years-employed');
+    const groupOcc = document.getElementById('group-occupation-type');
+    
+    function togglePensionerFields() {
+        if (incomeType.value === 'Pensioner') {
+            occupationType.value = 'Retired';
+            yearsEmployed.value = 0.0;
+            groupYears.style.opacity = '0.5';
+            groupOcc.style.opacity = '0.5';
+            occupationType.disabled = true;
+            yearsEmployed.disabled = true;
+        } else {
+            if (occupationType.value === 'Retired') {
+                occupationType.value = 'Laborers';
+            }
+            groupYears.style.opacity = '1.0';
+            groupOcc.style.opacity = '1.0';
+            occupationType.disabled = false;
+            yearsEmployed.disabled = false;
+        }
+    }
+    
+    incomeType.addEventListener('change', togglePensionerFields);
+    togglePensionerFields(); // Run on page load
+</script>
+{% endblock %}

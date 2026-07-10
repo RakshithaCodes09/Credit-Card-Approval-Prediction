@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block title %}Batch Prediction Engine {% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Batch Prediction Engine</h1>
+    <p>Upload files to predict credit approval outcomes in bulk, review real-time statistics, and download analytical datasets.</p>
+</div>
+
+<div class="grid-2">
+    <!-- File Upload Section -->
+    <div class="card">
+        <h2 class="card-title"><i class="fa-solid fa-file-csv"></i> Upload CSV Dataset</h2>
+        
+        <form action="{{ url_for('batch') }}" method="POST" enctype="multipart/form-data" id="batch-upload-form">
+            <!-- CSRF Protection Token -->
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            
+            <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <div>
+                    <h3>Drag & Drop CSV File</h3>
+                    <p style="margin-top: 0.25rem;">or click to browse from local computer</p>
+                </div>
+                <input type="file" name="file" id="file-input" style="display: none;" accept=".csv" onchange="updateDropzoneText(this)">
+                <div id="selected-file-name" style="font-size: 0.9rem; font-weight: 600; color: var(--accent-cyan); display: none;"></div>
+            </div>
+            
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <button type="submit" class="btn btn-primary" style="width: 100%;" id="btn-batch-submit">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Process Batch Application
+                </button>
+            </div>
+        </form>
+
+        <div style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+            <h4 style="margin-bottom: 0.75rem; font-size: 0.9rem; color: var(--text-primary);">Required CSV Column Structure</h4>
+            <p style="font-size: 0.8rem; margin-bottom: 1rem;">Your uploaded CSV must contain the following columns exactly (order does not matter):</p>
+            <div style="background-color: rgba(11, 15, 25, 0.4); padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border-color); font-family: monospace; font-size: 0.75rem; color: var(--text-secondary); max-height: 120px; overflow-y: auto;">
+                CODE_GENDER, FLAG_OWN_CAR, FLAG_OWN_REALTY, CNT_CHILDREN, AMT_INCOME_TOTAL, NAME_INCOME_TYPE, NAME_EDUCATION_TYPE, NAME_FAMILY_STATUS, NAME_HOUSING_TYPE, DAYS_BIRTH, DAYS_EMPLOYED, FLAG_WORK_PHONE, FLAG_PHONE, FLAG_EMAIL, OCCUPATION_TYPE, CNT_FAM_MEMBERS
+            </div>
+            <p style="font-size: 0.75rem; margin-top: 0.75rem; color: var(--text-muted);">
+                * Tip: DAYS_BIRTH is negative count of days from birth date (e.g. -12000 for age 32). DAYS_EMPLOYED is negative count of days employed (365243 if unemployed/retired).
+            </p>
+        </div>
+    </div>
+
+    <!-- Prediction Preview Section -->
+    <div class="card">
+        <h2 class="card-title"><i class="fa-solid fa-table-list"></i> Batch Summary</h2>
+        
+        {% if has_results %}
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div style="text-align: center; padding: 1rem; background-color: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 0.75rem;">
+                    <i class="fa-solid fa-circle-check" style="font-size: 2.5rem; color: var(--accent-emerald); margin-bottom: 0.5rem;"></i>
+                    <h3>Batch Processing Complete</h3>
+                    <p style="font-size: 0.85rem; margin-top: 0.25rem;">Output classifications appended successfully.</p>
+                </div>
+                
+                <div>
+                    <a href="{{ url_for('download_results') }}" class="btn btn-primary" style="width: 100%;" id="btn-download-results">
+                        <i class="fa-solid fa-download"></i> Download Prediction Results
+                    </a>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 0.75rem; font-size: 0.95rem;">Result Preview (Top 10 Records)</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Probability</th>
+                                    <th>Annual Income</th>
+                                    <th>Age (Years)</th>
+                                    <th>Occupation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in preview %}
+                                <tr>
+                                    <td>
+                                        <span class="result-badge {% if row.Credit_Approval_Status == 'Approved' %}approved-badge{% else %}rejected-badge{% endif %}" style="font-size: 0.7rem; padding: 0.25rem 0.6rem;">
+                                            {{ row.Credit_Approval_Status }}
+                                        </span>
+                                    </td>
+                                    <td style="font-weight: 600;">{{ "{:.1%}".format(row.Approval_Probability) }}</td>
+                                    <td>${{ "{:,.0f}".format(row.AMT_INCOME_TOTAL) }}</td>
+                                    <td>{{ (-row.DAYS_BIRTH // 365) | int }}</td>
+                                    <td style="font-size: 0.8rem; color: var(--text-secondary);">{{ row.OCCUPATION_TYPE }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div style="text-align: center; padding: 5rem 2rem; color: var(--text-secondary);" id="batch-placeholder">
+                <i class="fa-solid fa-file-shield" style="font-size: 4rem; margin-bottom: 1.5rem; color: var(--text-muted);"></i>
+                <h3>No Batch Processed</h3>
+                <p style="margin-top: 0.5rem;">Upload a validation or application dataset to compute approvals for high-volume portfolio evaluations.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const dropzone = document.getElementById('dropzone');
+    
+    // Highlight dropzone on drag over
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropzone.style.borderColor = '#06b6d4';
+            dropzone.style.backgroundColor = 'rgba(6, 182, 212, 0.05)';
+        }, false);
+    });
+    
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropzone.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+            dropzone.style.backgroundColor = 'rgba(255, 255, 255, 0.01)';
+        }, false);
+    });
+    
+    dropzone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        const fileInput = document.getElementById('file-input');
+        
+        if (files.length > 0) {
+            fileInput.files = files;
+            updateDropzoneText(fileInput);
+        }
+    });
+
+    function updateDropzoneText(input) {
+        const textContainer = document.getElementById('selected-file-name');
+        if (input.files.length > 0) {
+            textContainer.innerText = `Selected File: ${input.files[0].name}`;
+            textContainer.style.display = 'block';
+        } else {
+            textContainer.style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

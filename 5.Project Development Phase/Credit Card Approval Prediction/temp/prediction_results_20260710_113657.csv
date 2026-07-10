@@ -1,0 +1,11 @@
+CODE_GENDER,FLAG_OWN_CAR,FLAG_OWN_REALTY,CNT_CHILDREN,AMT_INCOME_TOTAL,NAME_INCOME_TYPE,NAME_EDUCATION_TYPE,NAME_FAMILY_STATUS,NAME_HOUSING_TYPE,DAYS_BIRTH,DAYS_EMPLOYED,FLAG_MOBIL,FLAG_WORK_PHONE,FLAG_PHONE,FLAG_EMAIL,OCCUPATION_TYPE,CNT_FAM_MEMBERS,Approval_Probability,Credit_Approval_Status
+F,Y,Y,0,161660.0,Working,Higher education,Single / not married,House / apartment,-21535,-3607,1,1,0,0,Accountants,1,0.994,Approved
+M,N,Y,0,95908.0,Pensioner,Secondary / secondary special,Married,House / apartment,-13505,365243,1,0,0,0,Retired,2,0.0159,Rejected
+M,N,Y,0,245554.0,Working,Secondary / secondary special,Civil marriage,House / apartment,-12410,-4958,1,0,1,0,Laborers,2,0.9754,Approved
+F,Y,Y,2,88396.0,State servant,Secondary / secondary special,Married,House / apartment,-13505,-838,1,0,1,0,High skill tech staff,4,0.4376,Rejected
+F,Y,Y,2,180671.0,Pensioner,Higher education,Married,House / apartment,-19345,365243,1,0,0,0,Retired,4,0.938,Approved
+F,Y,N,1,61094.0,Working,Secondary / secondary special,Single / not married,House / apartment,-16790,-255,1,0,0,0,Core staff,2,0.0102,Rejected
+F,Y,Y,0,83776.0,Working,Secondary / secondary special,Single / not married,House / apartment,-13505,-566,1,0,0,0,Drivers,1,0.0558,Rejected
+M,N,Y,0,179590.0,Pensioner,Secondary / secondary special,Married,House / apartment,-17520,365243,1,1,0,1,Retired,2,0.0666,Rejected
+F,N,Y,0,235445.0,Commercial associate,Secondary / secondary special,Single / not married,With parents,-16060,-1219,1,0,0,0,Drivers,1,0.819,Approved
+M,Y,Y,0,177315.0,Commercial associate,Secondary / secondary special,Married,House / apartment,-19345,-3731,1,0,0,0,Managers,2,0.9952,Approved

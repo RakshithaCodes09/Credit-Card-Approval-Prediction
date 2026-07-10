@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block title %}Model Performance Dashboard {% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Model Performance Dashboard</h1>
+    <p>Review the performance metrics, validation curves, and structural feature importances of our credit scoring engine.</p>
+</div>
+
+<!-- Performance Metrics Grid -->
+<div class="metrics-grid">
+    <div class="metric-card">
+        <div class="metric-value">{{ "{:.2%}".format(metrics.get('accuracy', 0)) }}</div>
+        <div class="metric-label">Model Accuracy</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-value">{{ "{:.2%}".format(metrics.get('roc_auc', 0)) }}</div>
+        <div class="metric-label">ROC AUC Score</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-value">{{ "{:.2%}".format(metrics.get('precision', 0)) }}</div>
+        <div class="metric-label">Precision</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-value">{{ "{:.2%}".format(metrics.get('recall', 0)) }}</div>
+        <div class="metric-label">Recall / Sensitivity</div>
+    </div>
+</div>
+
+<div class="grid-2">
+    <!-- Chart.js Feature Importances -->
+    <div class="card">
+        <h2 class="card-title"><i class="fa-solid fa-chart-bar"></i> Feature Importances</h2>
+        <div class="chart-container">
+            <canvas id="featureChart" style="height: 350px;"></canvas>
+        </div>
+    </div>
+    
+    <!-- Confusion Matrix Image / Static Matrix -->
+    <div class="card">
+        <h2 class="card-title"><i class="fa-solid fa-border-all"></i> Confusion Matrix</h2>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 1.5rem;">
+            <img src="{{ url_for('static', filename='img/confusion_matrix.png') }}" alt="Confusion Matrix" style="max-width: 100%; border-radius: 0.5rem; border: 1px solid var(--border-color);">
+            <p style="font-size: 0.85rem; text-align: center;">
+                Evaluated on 2,000 hold-out test samples. Shows correct predictions (diagonal) vs misclassifications.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 2.5rem;">
+    <h2 class="card-title"><i class="fa-solid fa-gears"></i> Engine Specifications</h2>
+    <div class="form-grid">
+        <div>
+            <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">Algorithm</p>
+            <p style="font-size: 0.85rem; margin-top: 0.25rem;">Gradient Boosting Decision Trees (GBDT)</p>
+        </div>
+        <div>
+            <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">Hyperparameters</p>
+            <p style="font-size: 0.85rem; margin-top: 0.25rem;">n_estimators=100, learning_rate=0.1, max_depth=5</p>
+        </div>
+        <div>
+            <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">Pre-processing</p>
+            <p style="font-size: 0.85rem; margin-top: 0.25rem;">StandardScaler (Numerical), OneHotEncoder (Categorical)</p>
+        </div>
+        <div>
+            <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">Data Generation Target</p>
+            <p style="font-size: 0.85rem; margin-top: 0.25rem;">Creditworthiness target generated using rule weights with random Gaussian noise.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Set up Feature Importance Chart
+    const rawImportances = {{ feature_importances | tojson }};
+    
+    // Sort and take top 10
+    const sortedFeatures = Object.entries(rawImportances)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
+        
+    const labels = sortedFeatures.map(item => item[0]);
+    const values = sortedFeatures.map(item => item[1]);
+
+    const ctx = document.getElementById('featureChart').getContext('2d');
+    
+    // Gradient fill for bars
+    const gradient = ctx.createLinearGradient(0, 0, 400, 0);
+    gradient.addColorStop(0, '#06b6d4'); // Cyan
+    gradient.addColorStop(1, '#3b82f6'); // Blue
+    
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Relative Importance Score',
+                data: values,
+                backgroundColor: gradient,
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                borderWidth: 1,
+                borderRadius: 5
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
+                    },
+                    ticks: {
+                        color: '#94a3b8'
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#f8fafc',
+                        font: {
+                            family: 'Outfit',
+                            size: 12
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

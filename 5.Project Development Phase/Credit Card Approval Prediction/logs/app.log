@@ -1,0 +1,177 @@
+2026-07-10 16:11:31,426 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 16:11:32,605 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 16:11:32,633 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.245.68.232:5000
+2026-07-10 16:11:32,633 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 16:17:52,413 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 16:17:53,642 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 16:17:53,668 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.245.68.232:5000
+2026-07-10 16:17:53,668 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 16:23:23,192 [INFO] 127.0.0.1 - - [10/Jul/2026 16:23:23] "GET / HTTP/1.1" 200 -
+2026-07-10 16:23:23,289 [INFO] 127.0.0.1 - - [10/Jul/2026 16:23:23] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-07-10 16:24:38,602 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 16:24:39,811 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 16:24:39,823 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.245.68.232:5000
+2026-07-10 16:24:39,824 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 16:45:05,642 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 16:45:06,804 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 16:45:06,822 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.245.68.232:5000
+2026-07-10 16:45:06,822 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 17:00:30,702 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 17:00:31,371 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 17:00:31,382 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.245.68.232:5000
+2026-07-10 17:00:31,382 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 17:09:08,855 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 17:09:09,521 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 17:09:09,531 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.245.68.232:5000
+2026-07-10 17:09:09,531 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 19:05:35,964 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 19:05:38,626 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 19:05:38,649 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.103:5000
+2026-07-10 19:05:38,649 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 19:08:55,774 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 19:08:56,944 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 19:08:56,964 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.103:5000
+2026-07-10 19:08:56,964 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 19:10:48,272 [INFO] 127.0.0.1 - - [10/Jul/2026 19:10:48] "GET / HTTP/1.1" 200 -
+2026-07-10 19:10:48,366 [INFO] 127.0.0.1 - - [10/Jul/2026 19:10:48] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-07-10 19:11:42,091 [INFO] 127.0.0.1 - - [10/Jul/2026 19:11:42] "GET / HTTP/1.1" 200 -
+2026-07-10 19:11:42,110 [INFO] 127.0.0.1 - - [10/Jul/2026 19:11:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 19:12:54,932 [INFO] Successful prediction. Approved: False, Probability: 0.0129
+2026-07-10 19:12:54,938 [INFO] 127.0.0.1 - - [10/Jul/2026 19:12:54] "POST / HTTP/1.1" 200 -
+2026-07-10 19:12:54,950 [INFO] 127.0.0.1 - - [10/Jul/2026 19:12:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 19:18:55,580 [INFO] Successful prediction. Approved: True, Probability: 0.7924
+2026-07-10 19:18:55,586 [INFO] 127.0.0.1 - - [10/Jul/2026 19:18:55] "POST / HTTP/1.1" 200 -
+2026-07-10 19:18:55,600 [INFO] 127.0.0.1 - - [10/Jul/2026 19:18:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 19:19:59,384 [INFO] 127.0.0.1 - - [10/Jul/2026 19:19:59] "GET /history HTTP/1.1" 200 -
+2026-07-10 19:19:59,399 [INFO] 127.0.0.1 - - [10/Jul/2026 19:19:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 19:21:38,506 [INFO] 127.0.0.1 - - [10/Jul/2026 19:21:38] "GET / HTTP/1.1" 200 -
+2026-07-10 19:21:38,518 [INFO] 127.0.0.1 - - [10/Jul/2026 19:21:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 19:32:37,139 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 19:32:38,603 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 19:32:38,617 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.103:5000
+2026-07-10 19:32:38,617 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 19:48:12,764 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 19:48:13,862 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 19:48:13,874 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.103:5000
+2026-07-10 19:48:13,874 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 19:49:09,195 [INFO] 127.0.0.1 - - [10/Jul/2026 19:49:09] "GET / HTTP/1.1" 200 -
+2026-07-10 19:49:09,208 [INFO] 127.0.0.1 - - [10/Jul/2026 19:49:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 19:49:10,917 [INFO] 127.0.0.1 - - [10/Jul/2026 19:49:10] "GET / HTTP/1.1" 200 -
+2026-07-10 19:49:10,929 [INFO] 127.0.0.1 - - [10/Jul/2026 19:49:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 19:50:04,292 [INFO] 127.0.0.1 - - [10/Jul/2026 19:50:04] "GET / HTTP/1.1" 200 -
+2026-07-10 19:50:04,305 [INFO] 127.0.0.1 - - [10/Jul/2026 19:50:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 19:54:09,107 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 19:54:10,463 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 19:54:10,491 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.103:5000
+2026-07-10 19:54:10,493 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 19:54:31,358 [INFO] 127.0.0.1 - - [10/Jul/2026 19:54:31] "GET / HTTP/1.1" 200 -
+2026-07-10 19:54:31,443 [INFO] 127.0.0.1 - - [10/Jul/2026 19:54:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 20:45:30,338 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 20:45:32,411 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 20:45:32,434 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.104:5000
+2026-07-10 20:45:32,434 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 21:41:22,898 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 21:41:24,340 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 21:41:24,366 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.105:5000
+2026-07-10 21:41:24,366 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 21:45:33,924 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 21:45:35,415 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 21:45:35,438 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.105:5000
+2026-07-10 21:45:35,439 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 21:48:38,581 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 21:48:40,091 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 21:48:40,128 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.105:5000
+2026-07-10 21:48:40,129 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 21:48:58,487 [INFO] 127.0.0.1 - - [10/Jul/2026 21:48:58] "GET / HTTP/1.1" 200 -
+2026-07-10 21:48:58,582 [INFO] 127.0.0.1 - - [10/Jul/2026 21:48:58] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-07-10 21:49:36,843 [INFO] 127.0.0.1 - - [10/Jul/2026 21:49:36] "POST / HTTP/1.1" 200 -
+2026-07-10 21:49:36,857 [INFO] 127.0.0.1 - - [10/Jul/2026 21:49:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 21:54:41,724 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 21:54:42,467 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 21:54:42,476 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.105:5000
+2026-07-10 21:54:42,476 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 21:54:55,730 [INFO] 127.0.0.1 - - [10/Jul/2026 21:54:55] "GET / HTTP/1.1" 200 -
+2026-07-10 21:54:55,767 [INFO] 127.0.0.1 - - [10/Jul/2026 21:54:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 21:55:14,926 [INFO] Successful prediction. Approved: False, Probability: 0.1469
+2026-07-10 21:55:14,929 [INFO] 127.0.0.1 - - [10/Jul/2026 21:55:14] "POST / HTTP/1.1" 200 -
+2026-07-10 21:55:14,940 [INFO] 127.0.0.1 - - [10/Jul/2026 21:55:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 21:55:26,683 [INFO] Successful prediction. Approved: True, Probability: 0.7924
+2026-07-10 21:55:26,689 [INFO] 127.0.0.1 - - [10/Jul/2026 21:55:26] "POST / HTTP/1.1" 200 -
+2026-07-10 21:55:26,715 [INFO] 127.0.0.1 - - [10/Jul/2026 21:55:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 22:00:10,246 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 22:00:10,979 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 22:00:10,989 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.105:5000
+2026-07-10 22:00:10,989 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 22:00:24,730 [INFO] 127.0.0.1 - - [10/Jul/2026 22:00:24] "GET / HTTP/1.1" 200 -
+2026-07-10 22:00:24,766 [INFO] 127.0.0.1 - - [10/Jul/2026 22:00:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 22:00:44,439 [INFO] Successful prediction. Approved: False, Probability: 0.0151
+2026-07-10 22:00:44,443 [INFO] 127.0.0.1 - - [10/Jul/2026 22:00:44] "POST / HTTP/1.1" 200 -
+2026-07-10 22:00:44,463 [INFO] 127.0.0.1 - - [10/Jul/2026 22:00:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 22:00:51,635 [INFO] Successful prediction. Approved: False, Probability: 0.0438
+2026-07-10 22:00:51,641 [INFO] 127.0.0.1 - - [10/Jul/2026 22:00:51] "POST / HTTP/1.1" 200 -
+2026-07-10 22:00:51,661 [INFO] 127.0.0.1 - - [10/Jul/2026 22:00:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-07-10 22:39:09,132 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 22:39:10,236 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 22:39:10,253 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.55.105:5000
+2026-07-10 22:39:10,253 [INFO] [33mPress CTRL+C to quit[0m
+2026-07-10 23:19:16,311 [WARNING] Using fallback developer secret key! Please set FLASK_SECRET_KEY in production environment.
+2026-07-10 23:19:18,525 [INFO] Loaded machine learning pipeline successfully.
+2026-07-10 23:19:18,546 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.245.68.232:5000
+2026-07-10 23:19:18,546 [INFO] [33mPress CTRL+C to quit[0m

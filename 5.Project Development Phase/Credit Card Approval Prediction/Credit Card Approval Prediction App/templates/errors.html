@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}System Advisory {% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 4rem auto; text-align: center;" class="card">
+    <i class="fa-solid fa-triangle-exclamation" style="font-size: 5rem; color: var(--accent-amber); margin-bottom: 2rem; text-shadow: 0 0 30px rgba(245, 158, 11, 0.25);"></i>
+    
+    <h1 style="font-size: 2.25rem; margin-bottom: 1rem; color: var(--text-primary);">
+        {{ error_title }}
+    </h1>
+    
+    <p style="margin-bottom: 2.5rem; font-size: 1.05rem; color: var(--text-secondary);">
+        {{ error_desc }}
+    </p>
+    
+    <div style="display: flex; gap: 1rem; justify-content: center;">
+        <a href="{{ url_for('index') }}" class="btn btn-primary" id="btn-error-home">
+            <i class="fa-solid fa-house-chimney"></i> Return to Terminal
+        </a>
+        <a href="mailto:support@creditpredictor.local" class="btn btn-secondary" id="btn-error-contact">
+            <i class="fa-solid fa-headset"></i> Contact SecOps
+        </a>
+    </div>
+</div>
+{% endblock %}

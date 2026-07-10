@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Prediction History {% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Prediction History</h1>
+    <p>View historical real-time calculations logged during the current user session.</p>
+</div>
+
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+        <h2 class="card-title" style="border: none; padding: 0; margin: 0;"><i class="fa-solid fa-history"></i> Recent Submissions</h2>
+        {% if records %}
+            <a href="{{ url_for('clear_history') }}" class="btn btn-danger" style="font-size: 0.85rem; padding: 0.5rem 1.25rem;" id="btn-clear-history">
+                <i class="fa-solid fa-trash-can"></i> Clear History
+            </a>
+        {% endif %}
+    </div>
+
+    {% if records %}
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Status</th>
+                        <th>Approval Probability</th>
+                        <th>Applicant Age</th>
+                        <th>Annual Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rec in records %}
+                    <tr>
+                        <td>{{ rec.timestamp }}</td>
+                        <td>
+                            <span class="result-badge {% if rec.approved %}approved-badge{% else %}rejected-badge{% endif %}" style="font-size: 0.75rem; padding: 0.3rem 0.75rem;">
+                                {% if rec.approved %}APPROVED{% else %}REJECTED{% endif %}
+                            </span>
+                        </td>
+                        <td style="font-weight: 600;">{{ rec.probability }}</td>
+                        <td>{{ rec.age }} Years</td>
+                        <td>{{ rec.income }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div style="text-align: center; padding: 5rem 2rem; color: var(--text-secondary);" id="history-placeholder">
+            <i class="fa-solid fa-folder-open" style="font-size: 4rem; margin-bottom: 1.5rem; color: var(--text-muted);"></i>
+            <h3>No Records Logged</h3>
+            <p style="margin-top: 0.5rem;">Predictions made in the Real-Time Predict panel are temporarily saved to active session memory. Try scoring some profiles!</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
